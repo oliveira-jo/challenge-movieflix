@@ -29,10 +29,10 @@ https://www.figma.com/file/6JQVnxKgKtVHLleSBBgRin/MovieFlix-front-listagem
 - [x] GET /genres deve retonar 200 com todos gêneros para VISITOR logado
 - [x] GET /genres deve retonar 200 com todos gêneros para MEMBER logado
 
-- [ ] GET /movies/{id} deve retornar 401 para token inválido
-- [ ] GET /movies/{id} deve retornar 200 com o filme para VISITOR logado
-- [ ] GET /movies/{id} deve retornar 200 com o filme para MEMBER logado
-- [ ] GET /movies/{id} deve retornar 404 para id inexistente
+- [x] GET /movies/{id} deve retornar 401 para token inválido
+- [x] GET /movies/{id} deve retornar 200 com o filme para VISITOR logado
+- [x] GET /movies/{id} deve retornar 200 com o filme para MEMBER logado
+- [x] GET /movies/{id} deve retornar 404 para id inexistente
 - [ ] GET /movies deve retornar 401 para token inválido
 - [ ] GET /movies deve retornar 200 com página ordenada de filmes para VISITOR logado
 - [ ] GET /movies deve retornar 200 com página ordenada de filmes para MEMBER logado

@@ -4,23 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.devsuperior.movieflix.dto.UserDTO;
-import com.devsuperior.movieflix.services.UserService;
+import com.devsuperior.movieflix.dto.MovieDetailsDTO;
+import com.devsuperior.movieflix.services.MovieService;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/movies")
+public class MovieController {
 
 	@Autowired
-	private UserService service;
+	private MovieService service;
 
 	@PreAuthorize("hasAnyRole('VISITOR', 'MEMBER')")
-	@GetMapping(value = "/profile")
-	public ResponseEntity<UserDTO> getProfile() {
-		UserDTO dto = service.getProfile();
-		return ResponseEntity.ok(dto);
+	@GetMapping("/{id}")
+	public ResponseEntity<MovieDetailsDTO> findById(@PathVariable Long id) {
+		return ResponseEntity.ok().body(service.findById(id));
 	}
 }
