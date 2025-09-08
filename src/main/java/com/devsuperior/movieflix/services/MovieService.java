@@ -1,6 +1,8 @@
 package com.devsuperior.movieflix.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,12 +16,18 @@ public class MovieService {
 	@Autowired
 	private MovieRepository repository;
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public MovieDetailsDTO findById(Long id) {
 		var resource = repository.findById(id).orElseThrow(
 				() -> new ResourceNotFoundException("Resource not found"));
 
 		return new MovieDetailsDTO(resource);
+	}
+
+	@Transactional(readOnly = true)
+	public Page<MovieDetailsDTO> findAll(Pageable pageable) {
+		var response = repository.findAll(pageable);
+		return response.map(obj -> new MovieDetailsDTO(obj));
 	}
 
 }
