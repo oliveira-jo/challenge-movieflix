@@ -1,5 +1,7 @@
 package com.devsuperior.movieflix.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.devsuperior.movieflix.dto.MovieCardDTO;
 import com.devsuperior.movieflix.dto.MovieDetailsDTO;
+import com.devsuperior.movieflix.dto.ReviewDTO;
 import com.devsuperior.movieflix.services.MovieService;
 
 @RestController
@@ -38,5 +41,11 @@ public class MovieController {
 			Pageable pageable) {
 		Pageable pg = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(sort));
 		return ResponseEntity.ok().body(service.findByGenre(genreId, pg));
+	}
+
+	@PreAuthorize("hasAnyRole('VISITOR', 'MEMBER')")
+	@GetMapping("/{id}/reviews")
+	public ResponseEntity<List<ReviewDTO>> findMoviesReviews(@PathVariable Long id) {
+		return ResponseEntity.ok().body(service.findMoviesReviews(id));
 	}
 }

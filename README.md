@@ -39,10 +39,18 @@ https://www.figma.com/file/6JQVnxKgKtVHLleSBBgRin/MovieFlix-front-listagem
 - [x] GET /movies deve retornar 200 com página ordenada de filmes para MEMBER logado
 - [x] GET /movies?genreId={id} deve retornar 200 com página ordenada de filmes filtrados por gênero
 
-- [ ] POST /reviews deve retornar 401 para token inválido
-- [ ] POST /reviews deve retornar 403 para VISITOR logado
-- [ ] POST /reviews deve retornar 201 com objeto inserido para MEMBER logado e dados válidos
-- [ ] POST /reviews deve retornar 422 para MEMBER logado e dados inválidos
+- [x] POST /reviews deve retornar 401 para token inválido
+- [x] POST /reviews deve retornar 403 para VISITOR logado
+- [x] POST /reviews deve retornar 201 com objeto inserido para MEMBER logado e dados válidos
+- [x] POST /reviews deve retornar 422 para MEMBER logado e dados inválidos
+
+- [x] POST /reviews deve retornar 404 para movieId inexistente
+
+- [x] GET /movies/{id}/reviews deve retornar 401 para token inválido
+- [x] GET /movies/{id}/reviews deve retornar 200 com a lista de reviews do filme para VISITOR
+- [x] GET /movies/{id}/reviews deve retornar 200 com a lista de reviews do filme para MEMBER
+
+
 
 ## Competências avaliadas:
 
